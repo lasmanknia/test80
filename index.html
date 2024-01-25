@@ -193,15 +193,23 @@
         }
     }
 
-    // Make a strategic move
-    const strategicMoves = [4, 0, 2, 6, 8]; // Center, corners, and sides
+    // Make a more strategic move
+    const strategicMoves = [4, 0, 2, 6, 8, 1, 3, 5, 7]; // Center, corners, and sides
     const availableStrategicMoves = strategicMoves.filter(move => emptyCells.includes(move));
 
     if (availableStrategicMoves.length > 0) {
         const randomIndex = availableStrategicMoves[Math.floor(Math.random() * availableStrategicMoves.length)];
         setTimeout(() => cellClick(randomIndex), 500);
+        return;
+    }
+
+    // If no strategic move is available, choose a random empty cell
+    if (emptyCells.length > 0) {
+        const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        setTimeout(() => cellClick(randomIndex), 500);
     }
 }
+
 
 function isWinner(board, player) {
     const winningCombinations = [
