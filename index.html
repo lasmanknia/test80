@@ -111,7 +111,7 @@
 <body>
     <div class="container">
         <h1>TicTacToe by UDDOG</h1>
-        <p>You can also play with UDRITA</p>
+        <p id="welcome-message" >You can also play with UDRITA</p>
         
         <div>
             <select id="playerMode" onchange="changePlayerMode()">
@@ -329,6 +329,16 @@ function closePopup() {
     resetGame();
 }
 
+
+const storedUserName = localStorage.getItem('userName');
+
+if (storedUserName) {
+    // Get the existing <p> element by its id
+    const welcomeParagraph = document.getElementById("welcome-message");
+
+    // Set the content of the <p> element
+    welcomeParagraph.innerText = `Hey, ${storedUserName}! Can you Beat UDRITA`;
+}
     </script>
 </body>
 </html>
